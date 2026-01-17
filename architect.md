@@ -66,3 +66,4 @@ Based on `.bmad-core/core-config.yaml`:
 - Full-stack application design
 
 Ready to architect something amazing? Choose a command or describe what you need!
+             
