@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Bhagavad Gita",
+    "slug": "bhagavad-gita",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "gita",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F5E6D3"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gita.learning"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F5E6D3"
+      },
+      "package": "com.gita.learning"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
