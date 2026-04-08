@@ -4,8 +4,8 @@ from functools import lru_cache
 
 class Settings(BaseSettings):
     # Database
-    database_url: str = "postgresql+asyncpg://gita_user:gita_password@localhost:5432/gita_db"
-    database_url_sync: str = "postgresql://gita_user:gita_password@localhost:5432/gita_db"
+    database_url: str = "postgresql+asyncpg://postgres:root@localhost:5432/gita"
+    database_url_sync: str = "postgresql://postgres:root@localhost:5432/gita"
 
     # Redis
     redis_url: str = "redis://localhost:6379/0"

@@ -3,12 +3,17 @@ import json
 import os
 from typing import Any
 
-import numpy as np
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
 from app.models.shloka import Shloka
+
+try:
+    import numpy as np
+    _HAS_NUMPY = True
+except ImportError:
+    _HAS_NUMPY = False
 
 settings = get_settings()
 
@@ -56,7 +61,9 @@ def reload_index():
     _get_index_mapping()
 
 
-def generate_embedding(text: str) -> np.ndarray:
+def generate_embedding(text: str):
+    if not _HAS_NUMPY:
+        return None
     model = _get_embedding_model()
     return model.encode([text])[0].astype("float32")
 
@@ -76,10 +83,12 @@ async def retrieve_similar_shlokas(
     index = _get_faiss_index()
     mapping = _get_index_mapping()
 
-    if index is None or not mapping:
+    if index is None or not mapping or not _HAS_NUMPY:
         return []
 
     query_vec = generate_embedding(query)
+    if query_vec is None:
+        return []
     query_vec = np.array([query_vec]).astype("float32")
 
     distances, indices = index.search(query_vec, top_k + 5)

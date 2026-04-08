@@ -44,8 +44,8 @@ CHAPTER_DESCRIPTIONS = {
 
 async def fetch_chapters() -> list[dict]:
     """Fetch all chapter metadata from the API."""
-    async with httpx.AsyncClient(timeout=30) as client:
-        resp = await client.get(f"{API_BASE}/chapters")
+    async with httpx.AsyncClient(timeout=30, follow_redirects=True) as client:
+        resp = await client.get(f"{API_BASE}/chapters/")
         resp.raise_for_status()
         return resp.json()
 
@@ -141,11 +141,12 @@ async def seed_full_gita():
     failed_verses = 0
     embedding_idx = 0
 
-    async with httpx.AsyncClient(timeout=30) as client:
+    async with httpx.AsyncClient(timeout=30, follow_redirects=True) as client:
         for ch in chapters_data:
             ch_num = ch["chapter_number"]
             verse_count = ch["verses_count"]
-            print(f"Chapter {ch_num:2d} ({ch['transliteration']:30s}) - {verse_count} verses ", end="", flush=True)
+            ch_name = ch['transliteration'].encode('ascii', 'replace').decode('ascii')
+            print(f"Chapter {ch_num:2d} ({ch_name:30s}) - {verse_count} verses ", end="", flush=True)
 
             chapter_shlokas = []
 
