@@ -48,6 +48,7 @@ export type RootStackParamList = {
   LifeGuidance: undefined;
   ReadingProgress: undefined;
   WisdomHistory: undefined;
+  Chat: undefined;
 };
 
 export type TabParamList = {

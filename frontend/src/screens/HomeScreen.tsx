@@ -131,6 +131,17 @@ export default function HomeScreen() {
         </Card.Content>
       </Card>
 
+      <Card style={styles.card} onPress={() => navigation.navigate('Chat')}>
+        <Card.Content>
+          <Text variant="titleMedium" style={styles.cardTitle}>
+            Chat with Gita
+          </Text>
+          <Text variant="bodySmall" style={styles.cardDesc}>
+            Ask questions and get AI-powered wisdom from the Bhagavad Gita
+          </Text>
+        </Card.Content>
+      </Card>
+
       <Card style={styles.card} onPress={() => navigation.navigate('LifeGuidance')}>
         <Card.Content>
           <Text variant="titleMedium" style={styles.cardTitle}>

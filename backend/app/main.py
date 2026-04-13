@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 import traceback
 
 from app.config import get_settings
-from app.routes import auth, content, health, rag, oauth, bookmarks, profile, search, daily_wisdom, audio, life_guidance, progress, account
+from app.routes import auth, content, health, rag, oauth, bookmarks, profile, search, daily_wisdom, audio, life_guidance, progress, account, chat
 from app.routes import settings as settings_routes
 
 app_settings = get_settings()
@@ -39,6 +39,7 @@ app.include_router(audio.router, prefix=app_settings.api_prefix)
 app.include_router(life_guidance.router, prefix=app_settings.api_prefix)
 app.include_router(progress.router, prefix=app_settings.api_prefix)
 app.include_router(account.router, prefix=app_settings.api_prefix)
+app.include_router(chat.router, prefix=app_settings.api_prefix)
 
 
 @app.exception_handler(Exception)

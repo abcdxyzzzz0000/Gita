@@ -26,6 +26,8 @@ class Settings(BaseSettings):
     embedding_model: str = "all-MiniLM-L6-v2"
     ollama_model: str = "mistral:7b"
     ollama_base_url: str = "http://localhost:11434"
+    groq_api_key: str = ""
+    groq_model: str = "llama-3.1-8b-instant"
     rag_context_size: int = 3
     rag_max_tokens: int = 500
     rag_temperature: float = 0.7
@@ -35,7 +37,7 @@ class Settings(BaseSettings):
     app_name: str = "Bhagavad Gita Learning API"
     api_prefix: str = "/api"
 
-    model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
+    model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}
 
 
 @lru_cache()

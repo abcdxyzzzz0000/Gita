@@ -19,6 +19,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import LifeGuidanceScreen from '../screens/LifeGuidanceScreen';
 import ReadingProgressScreen from '../screens/ReadingProgressScreen';
 import WisdomHistoryScreen from '../screens/WisdomHistoryScreen';
+import ChatScreen from '../screens/ChatScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -69,6 +70,7 @@ export default function AppNavigator() {
               options={({ route }) => ({ title: route.params.chapterTitle })}
             />
             <Stack.Screen name="ShlokaDetail" component={ShlokaDetailScreen} options={{ title: 'Verse Detail' }} />
+            <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'Gita Chat' }} />
           </>
         ) : (
           <>
@@ -82,6 +84,7 @@ export default function AppNavigator() {
             <Stack.Screen name="Bookmarks" component={BookmarksScreen} options={{ title: 'My Bookmarks' }} />
             <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
             <Stack.Screen name="LifeGuidance" component={LifeGuidanceScreen} options={{ title: 'Life Guidance' }} />
+            <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'Gita Chat' }} />
             <Stack.Screen name="ReadingProgress" component={ReadingProgressScreen} options={{ title: 'Reading Progress' }} />
             <Stack.Screen name="WisdomHistory" component={WisdomHistoryScreen} options={{ title: 'Wisdom History' }} />
           </>
